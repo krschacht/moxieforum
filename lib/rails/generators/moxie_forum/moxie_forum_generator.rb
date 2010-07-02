@@ -10,6 +10,8 @@ class MoxieForumGenerator < Rails::Generators::Base
 
    # Implement the required interface for Rails::Generators::Migration.
    # taken from http://github.com/rails/rails/blob/master/activerecord/lib/generators/active_record.rb
+   # examples: http://caffeinedd.com/guides/331-making-generators-for-rails-3-with-thor
+   
   def self.next_migration_number(dirname) #:nodoc:
     if ActiveRecord::Base.timestamped_migrations
       Time.now.utc.strftime("%Y%m%d%H%M%S")
@@ -19,6 +21,10 @@ class MoxieForumGenerator < Rails::Generators::Base
   end
 
   def create_migration_file
-    migration_template 'migration.rb', 'db/migrate/create_accounts_table.rb'
+    migration_template 'migration.rb', 'db/migrate/create_forums_table.rb'
+  end
+  
+  def copy_config_file
+    copy_file 'config.yml', 'config/moxie_forum.yml'
   end
 end

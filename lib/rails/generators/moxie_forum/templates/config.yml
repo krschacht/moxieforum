@@ -1,0 +1,5 @@
+development:
+  mount_at: /keithie
+
+production:
+  mount_at: /keither

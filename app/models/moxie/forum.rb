@@ -1,4 +1,4 @@
-module MoxieForum
+module Moxie
   class Forum < ActiveRecord::Base
 
   end

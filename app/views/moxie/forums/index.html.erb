@@ -1,0 +1,27 @@
+<h1>Listing forums</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Num topics</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forums.each do |forum| %>
+  <tr>
+    <td><%= forum.title %></td>
+    <td><%= forum.description %></td>
+    <td><%= forum.num_topics %></td>
+    <td><%= link_to 'Show', forum %></td>
+    <td><%= link_to 'Edit', edit_moxie_forum_path(forum) %></td>
+    <td><%= link_to 'Destroy', forum, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Forum', new_moxie_forum_path %>
