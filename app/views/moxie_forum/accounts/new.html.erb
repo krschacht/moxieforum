@@ -1,0 +1,10 @@
+<% form_for(@account) do |f| %>
+<fieldset>
+<legend>New Account</legend>
+<ul>
+  <li><%= f.label :uname, 'User Name: ' %><%= f.text_field :uname %></li>
+  <li><%= f.label :password, 'Password: ' %><%= f.password_field :password%></li>
+  <li><%= f.submit %></li>
+</ul>
+</fieldset>
+<% end %>
