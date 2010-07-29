@@ -4,8 +4,8 @@ class CreateMoxieForumTables < ActiveRecord::Migration
     create_table :moxie_forums, :force => true do |t|
       t.string    :title
       t.text      :description
-      t.integer   :position,       :default => 1
-      t.integer   :topics_count,   :default => 0
+      t.integer   :position,      :default => 1
+      t.integer   :topic_count,   :default => 0
 	    t.datetime  :created_at
 	    t.datetime  :updated_at
     end

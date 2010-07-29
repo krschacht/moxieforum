@@ -4,4 +4,5 @@ module Moxie
 
     has_many :topics
   end
+  
 end

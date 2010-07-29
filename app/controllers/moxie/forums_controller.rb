@@ -3,8 +3,6 @@ module Moxie
 
     unloadable
 
-    # GET /forums
-    # GET /forums.xml
     def index
       @forums = Forum.all
 
@@ -14,8 +12,6 @@ module Moxie
       end
     end
 
-    # GET /forums/1
-    # GET /forums/1.xml
     def show
       @forum = Forum.find(params[:id])
 
@@ -25,8 +21,6 @@ module Moxie
       end
     end
 
-    # GET /forums/new
-    # GET /forums/new.xml
     def new
       @forum = Forum.new
 
@@ -36,13 +30,10 @@ module Moxie
       end
     end
 
-    # GET /forums/1/edit
     def edit
       @forum = Forum.find(params[:id])
     end
 
-    # POST /forums
-    # POST /forums.xml
     def create
       @forum = Forum.new(params[:moxie_forum])
 
@@ -57,8 +48,6 @@ module Moxie
       end
     end
 
-    # PUT /forums/1
-    # PUT /forums/1.xml
     def update
       @forum = Forum.find(params[:id])
 
@@ -73,8 +62,6 @@ module Moxie
       end
     end
 
-    # DELETE /forums/1
-    # DELETE /forums/1.xml
     def destroy
       @forum = Forum.find(params[:id])
       @forum.destroy

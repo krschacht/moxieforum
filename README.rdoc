@@ -1,3 +1,21 @@
+Features:
+
+TESTS
+
+Topics:
+- sticky
+- locked
+- merge
+- split
+
+- figure out how to destroy all posts in one query instead of individual
+
+
+Forum:
+- allow admin-only forums
+
+
+
 == Intro
 
 authr3 is yet another autentication plugin for Rails. It is built on top of the new Rails::Engine API. Basically, I was working on a new Rails 3 app, needed authentication and decided to write this plugin on a work-filled Friday night. I wouldn't suggest this plugin for use in anything besides a local app right now seeing as its missing things like forced HTTPS for login. You can add this to your app yourself if you like or if you have some free time please fork it or let me know and will give you commit access to this one.
