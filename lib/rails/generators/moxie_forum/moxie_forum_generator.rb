@@ -21,10 +21,14 @@ class MoxieForumGenerator < Rails::Generators::Base
   end
 
   def create_migration_file
-    migration_template 'migration.rb', 'db/migrate/create_forums_table.rb'
+    migration_template 'migration.rb', 'db/migrate/create_moxie_forum_tables.rb'
   end
   
-  def copy_config_file
-    copy_file 'config.yml', 'config/moxie_forum.yml'
+  # def copy_config_file
+  #   copy_file 'config.yml', 'config/moxie_forum.yml'
+  # end
+
+  def copy_initializer_file
+    copy_file 'initializer.rb', 'config/initializers/moxie_forum.rb'
   end
 end
