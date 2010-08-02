@@ -3,6 +3,12 @@ module Moxie
     set_table_name "moxie_forums"
 
     has_many :topics
+    before_destroy :remove_topics
+    
+    def remove_topics
+      topics.each { |t| t.destroy }
+    end
+    
   end
   
 end

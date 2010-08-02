@@ -1,0 +1,11 @@
+welcome:
+  forum_id: :announcements
+  author_id: 0
+  title: Welcome Everyone
+
+faq:
+  forum_id: :announcements
+  author_id: 0
+  title: Frequently Asked Questions
+
+

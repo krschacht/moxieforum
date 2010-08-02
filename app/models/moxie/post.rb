@@ -2,8 +2,14 @@ module Moxie
   class Post < ActiveRecord::Base
     set_table_name "moxie_posts"
     
+    begin
+      user_model = MoxieForum::Engine.config.user_model
+    rescue
+      user_model = "user"
+    end
+    
     belongs_to :topic
-    belongs_to :author, :class_name => MoxieForum::Engine.config.user_model
+    belongs_to :author, :class_name => user_model
     
     after_create    :increment_topic_post_count
     before_destroy  :decrement_topic_post_count

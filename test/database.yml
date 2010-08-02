@@ -1,0 +1,4 @@
+mysql:
+  adapter: mysql
+  host: localhost
+  database: moxie_forum_plugin_test
