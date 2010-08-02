@@ -1,4 +1,4 @@
-<%= form_for(@forum) do |f| %>
+<%= form_for [ :admin, @forum ] do |f| %>
   <% if @forum.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@forum.errors.count, "error") %> prohibited this forum from being saved:</h2>
@@ -19,8 +19,8 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :num_topics %><br />
-    <%= f.text_field :num_topics %>
+    <%= f.label :topic_count %><br />
+    <%= f.text_field :topic_count %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -4,6 +4,8 @@ module Moxie
 
     has_many :topics
     before_destroy :remove_topics
+
+    validates :title, :presence => true
     
     def remove_topics
       topics.each { |t| t.destroy }
