@@ -21,14 +21,55 @@ class MoxieForumGenerator < Rails::Generators::Base
   end
 
   def create_migration_file
-    migration_template 'migration.rb', 'db/migrate/create_moxie_forum_tables.rb'
+    f = File.open File.join(File.dirname(__FILE__), 'templates', 'schema.rb')
+    schema = f.read; f.close
+    
+    schema.gsub!(/ActiveRecord::Schema.*\n/, '')
+    schema.gsub!(/^end\n*$/, '')
+
+    f = File.open File.join(File.dirname(__FILE__), 'templates', 'migration.rb')
+    migration = f.read; f.close
+    migration.gsub!(/INSERT_SCHEMA/, schema)
+    
+    tmp = File.open "tmp/~migration_ready.rb", "w"
+    tmp.write migration
+    tmp.close
+
+    migration_template  '../../../tmp/~migration_ready.rb',
+                        'db/migrate/create_moxie_forum_tables.rb'
+    remove_file 'tmp/~migration_ready.rb'
   end
-  
-  # def copy_config_file
-  #   copy_file 'config.yml', 'config/moxie_forum.yml'
-  # end
 
   def copy_initializer_file
     copy_file 'initializer.rb', 'config/initializers/moxie_forum.rb'
   end
+
+  def update_application_template
+    f = File.open "app/views/layouts/application.html.erb"
+    layout = f.read; f.close
+    
+    if layout =~ /<%=[ ]+yield[ ]+%>/
+      print "    \e[1m\e[34mquestion\e[0m  Your layouts/application.html.erb layout currently has the line <%= yield %>. MoxieForum needs to change this line to <%= yield(:content) or yield %> to support its nested layouts. This change should not affect any of your existing layouts or views. Is this okay? [y/n] "
+      begin
+        answer = gets.chomp
+      end while not answer =~ /[yn]/i
+      
+      if answer =~ /y/i
+        layout.gsub!(/<%=[ ]+yield[ ]+%>/, '<%= yield(:content) or yield %>')
+
+        tmp = File.open "tmp/~application.html.erb", "w"
+        tmp.write layout; tmp.close
+
+        remove_file 'app/views/layouts/application.html.erb'
+        copy_file '../../../tmp/~application.html.erb', 
+                  'app/views/layouts/application.html.erb'
+        remove_file 'tmp/~application.html.erb'
+      end
+    elsif layout =~ /<%=[ ]+yield\(:content\) or yield[ ]+%>/
+      puts "    \e[1m\e[33mskipping\e[0m  layouts/application.html.erb modification"
+    else
+      puts "    \e[1m\e[31mconflict\e[0m  MoxieForum is confused by your layouts/application.html.erb. It does not contain the default line <%= yield %>, you may need to make manual changes to get MoxieForum's nested layouts working. Visit ###### for details."
+    end
+  end
+  
 end

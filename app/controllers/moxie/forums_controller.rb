@@ -1,6 +1,8 @@
 module Moxie
   class ForumsController < ApplicationController
 
+    layout 'forums'
+    
     unloadable
 
     def index
@@ -13,7 +15,8 @@ module Moxie
     end
 
     def show
-      @forum = Forum.find(params[:id])
+      @forum = Forum.find( params[:id] )
+      @topic = Topic.new
 
       respond_to do |format|
         format.html # show.html.erb

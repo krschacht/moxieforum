@@ -1,3 +1,6 @@
+class CreateMoxieForumTables < ActiveRecord::Migration
+  def self.up
+    INSERT_SCHEMA
   end
 
   def self.down

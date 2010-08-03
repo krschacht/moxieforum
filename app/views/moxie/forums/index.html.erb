@@ -1,21 +1,20 @@
-<h1>Listing forums</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Num topics</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @forums.each do |forum| %>
-  <tr>
-    <td><%= forum.title %></td>
-    <td><%= forum.description %></td>
-    <td><%= forum.topic_count %></td>
-  </tr>
+
+  <div class="m_forum clearfix">
+      
+    <div class="m_name">
+      <div class="m_title"><%= link_to forum.title, moxie_forum_path( forum ) %></div>
+      <div class="m_description">
+        <span class="m_topic_count"><%= pluralize forum.topic_count, "topic" %>.</span>
+        <%= forum.description %>
+      </div>
+    </div>
+
+    <div class="m_info">
+      <div class="m_topic_count"><%= pluralize forum.topic_count, "topic" %></div>
+    </div>
+
+  </div>
+    
 <% end %>
-</table>
 

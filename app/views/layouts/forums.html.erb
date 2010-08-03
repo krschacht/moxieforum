@@ -1,0 +1,14 @@
+
+<% content_for :content do %>
+
+<%= stylesheet_link_tag("moxie_forum") %>
+
+<div class="mfw">
+
+  <%= yield %>
+
+</div>
+
+<% end -%>
+
+<%= render :file => 'layouts/application' %>

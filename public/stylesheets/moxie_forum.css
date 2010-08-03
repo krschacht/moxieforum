@@ -1,0 +1,138 @@
+/* Moxie Forum Wrapper: all classes in Moxie Forum are contained 
+   within an mfw div so you can scope all CSS declarations to that
+*/
+
+.mfw {
+  font-family: "Lucida Sans","Lucida Grande",verdana,sans-serif;
+  padding: 20px 40px 30px 30px;
+  text-rendering: optimizelegibility;
+  border: 1px solid #CCCCCC;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -moz-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+}
+
+.mfw a,
+.mfw a:link,
+.mfw a:visited,
+.mfw a:hover,
+.mfw a:active {
+  color: #000000;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.mfw a:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.mfw a.always_underlined,
+.mfw a.always_underlined:link,
+.mfw a.always_underlined:visited,
+.mfw a.always_underlined:hover,
+.mfw a.always_underlined:active {
+  text-decoration: underline;
+}
+
+/* Forum layout */
+
+.mfw .m_nav {
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.mfw .m_header {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: bold;
+  background-color: #EEEEEE;
+  padding: 8px 10px;
+}
+
+.mfw .m_forum,
+.mfw .m_topic,
+.mfw .m_post {
+  padding: 15px 0 10px 0;
+  border-top: 1px solid #E5E5E5;
+}
+
+.mfw .m_forum:first-child,
+.mfw .m_topic:first-child,
+.mfw .m_post:first-child {
+  border-top: none;
+}
+
+.mfw .m_topic,
+.mfw .m_post {
+  margin-left: 10px;
+}
+
+.mfw .m_forum .m_name,
+.mfw .m_topic .m_name, {
+  float: left;
+}
+
+.mfw .m_forum .m_name .m_title,
+.mfw .m_topic .m_name .m_title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.mfw .m_forum .m_name .m_description,
+.mfw .m_topic .m_name .m_description {
+  font-size: 11px;
+  line-height: 13px;
+  color: #777777;
+  margin-bottom: 10px;
+}
+
+.mfw .m_forum .m_info,
+.mfw .m_topic .m_info {
+  float: right;
+  display: none;
+}
+
+.mfw .m_post .m_user {
+  float: left;
+  width: 100px;
+}
+
+.mfw .m_post .m_contents {
+  margin-left: 110px;
+}
+
+.mfw .m_post .m_head {
+  margin-bottom: 8px;
+}
+
+.mfw .m_post .m_author {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+.mfw .m_post .m_datetime {
+  font-size: 11px;
+  color: #777777;
+}
+
+.mfw .m_post .m_body {
+  font-size: 13px;
+  color: #444444;
+}
+
+/* Utility classes */
+
+.mfw .clearfix:after { 
+  content:"\0020";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+  overflow:hidden;
+}
+.mfw .clearfix {
+  display:block;
+}

@@ -4,9 +4,8 @@ require "action_controller"
 
 module MoxieForum
   class Engine < Rails::Engine
-    #engine_name :authr
-    # getting depracation warning
-    
+
+    # Defaults
     config.mount_at = "/"
     config.user_model = :user
     
@@ -19,8 +18,11 @@ module MoxieForum
       # convert symbol to an uppercase class name string
       if config.user_model.is_a? Symbol
         config.user_model = config.user_model.to_s[0..0].upcase + config.user_model.to_s[1..9]
-      end
-                  
+      end                  
+    end
+    
+    initializer "static assets" do |app|
+      app.middleware.use ::ActionDispatch::Static, "#{root}/public"
     end
     
   end
