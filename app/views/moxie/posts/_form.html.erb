@@ -1,0 +1,34 @@
+<%= form_for [ @post ] do |f| %>
+  <% if @post.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this forum from being saved:</h2>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="m_post clearfix m_newpost">
+    <div class="m_user">
+      pic
+    </div>
+
+    <div class="m_contents">
+
+      <div class="m_body">
+        <div class="m_prompt field"><%= f.label :body, "Add a reply" %></div>
+          <%= f.text_area :body %>
+      </div>
+            
+      <%= hidden_field_tag 'moxie_post[topic_id]', @topic.id %>
+
+      <div class="m_actions"><%= f.submit %></div>
+      
+    </div> <!-- contents -->
+  </div>   <!-- post -->
+  
+  
+
+<% end %>

@@ -1,0 +1,23 @@
+<div class="m_post clearfix">
+    
+  <div class="m_user">
+    pic
+  </div>
+  
+  <div class="m_contents">
+    <div class="m_meta">
+      <span class="m_author">Keith Schacht</span>
+      <span class="m_datetime">Jun 28, 2008 3:23pm</span>
+    </div>
+
+    <div class="m_body">
+      <%= auto_link( h( post.body ).
+          gsub(/\n/, '<br>').
+          gsub(/\[b\](.*?)\[\/b\]/, "<b>\\1</b>").
+          gsub(/\[i\](.*?)\[\/i\]/, "<i>\\1</i>").
+          gsub(/\[u\](.*?)\[\/u\]/, "<u>\\1</u>").
+          gsub(/\?last_post_at=\d+/, "") , :all ) %>
+    </div>
+  </div>
+
+</div>

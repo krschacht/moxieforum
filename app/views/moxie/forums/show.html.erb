@@ -1,6 +1,17 @@
-<div class="m_nav">< <%= link_to "All Forums", moxie_forums_path, :class => "always_underlined "%></div>
+<div class="m_nav">< <%= link_to  "All Forums", 
+                                  moxie_forums_path, 
+                                  :class => "always_underlined "%>
+</div>
 
-<div class="m_header"><%= @forum.title %></div>
+<div class="m_header">
+  <%= @forum.title %>  
+</div>
+
+<div class="m_header_links">
+  <%= link_to "Start a new discussion", 
+              new_moxie_topic_path( @forum ),
+              :class => "always_underlined action" %>
+</div>
 
 <div>
 <% @forum.topics.each do |topic| %>
@@ -25,24 +36,3 @@
 </div>
 
 
-<%= form_for [ @topic ] do |f| %>
-  <% if @topic.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this forum from being saved:</h2>
-    <ul>
-    <% @topic.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <%= hidden_field_tag 'moxie_topic[forum_id]', @forum.id %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

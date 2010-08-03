@@ -17,6 +17,7 @@ module Moxie
     def show
       @forum = Forum.find( params[:id] )
       @topic = Topic.new
+      @topic.posts.build      
 
       respond_to do |format|
         format.html # show.html.erb

@@ -1,0 +1,50 @@
+
+<%= form_for [ @topic ] do |f| %>
+  <% if @topic.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this forum from being saved:</h2>
+    <ul>
+    <% @topic.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="m_post clearfix">
+
+    <div class="m_user">
+      pic
+    </div>
+
+    <div class="m_contents">
+      <div class="m_meta">
+        <div class="m_prompt field"><%= f.label :title, "What's your question?" %></div>
+        <%= f.text_field :title %>
+        <div class="m_prompt_explanation"></div>
+      </div>
+
+      <%= f.fields_for :posts do |p| %>
+
+      <div class="m_body">
+        <div class="m_prompt field"><%= p.label :body, "Explanation" %></div>
+          <%= p.text_area :body %>
+      </div>
+      
+      <% end %>
+      
+      <%= hidden_field_tag 'moxie_topic[forum_id]', @forum.id %>
+
+      <div class="m_actions">
+        <%= f.submit %>
+        or <%= link_to "Cancel",
+                        moxie_forum_path( @forum ),
+                        :class => "action" %>        
+        </div>
+      
+    </div> <!-- contents -->
+  </div>   <!-- post -->
+  
+  
+
+<% end %>

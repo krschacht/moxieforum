@@ -34,6 +34,11 @@
   text-decoration: underline;
 }
 
+.mfw a.action {
+  font-size: 14px;
+  color: #DD0000;
+}
+
 /* Forum layout */
 
 .mfw .m_nav {
@@ -47,6 +52,11 @@
   font-weight: bold;
   background-color: #EEEEEE;
   padding: 8px 10px;
+}
+
+.mfw .m_header_links {
+  padding: 5px 10px 0 10px;
+  text-align: right;
 }
 
 .mfw .m_forum,
@@ -103,17 +113,17 @@
   margin-left: 110px;
 }
 
-.mfw .m_post .m_head {
+.mfw .m_post .m_meta {
   margin-bottom: 8px;
 }
 
-.mfw .m_post .m_author {
+.mfw .m_post .m_meta .m_author {
   font-size: 14px;
   font-weight: bold;
   line-height: 19px;
 }
 
-.mfw .m_post .m_datetime {
+.mfw .m_post .m_meta .m_datetime {
   font-size: 11px;
   color: #777777;
 }
@@ -121,6 +131,38 @@
 .mfw .m_post .m_body {
   font-size: 13px;
   color: #444444;
+}
+
+.mfw .m_post .m_prompt {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.mfw .m_post input.text,
+.mfw .m_post textarea {
+  font-size: 14px;
+  padding: 3px;
+  width: 500px;
+}
+
+.mfw .m_post .m_actions {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.mfw .m_post .m_actions input {
+  font-size: 12px;
+}
+
+.mfw .m_newpost {
+  -moz-border-radius-bottomleft:10px;
+  -moz-border-radius-bottomright:10px;
+  background:url("/images/gradient_grey.png") repeat-x scroll left bottom #F5F5F5;
+  border-top:1px solid #DDDDDD;
+  font-size:14px;
+  margin:25px -40px -30px -30px;
+  padding:20px 40px 10px 40px;
 }
 
 /* Utility classes */
@@ -135,4 +177,8 @@
 }
 .mfw .clearfix {
   display:block;
+}
+
+.mfw .m_hidden {
+  display: none;
 }

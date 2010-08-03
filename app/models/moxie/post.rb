@@ -11,6 +11,8 @@ module Moxie
     belongs_to :topic
     belongs_to :author, :class_name => user_model
     
+    validates :body, :presence => true
+    
     after_create    :increment_topic_post_count
     before_destroy  :decrement_topic_post_count
     

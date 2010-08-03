@@ -12,7 +12,10 @@ module Moxie
     belongs_to    :author,           :class_name => user_model
     belongs_to    :last_post_author, :class_name => user_model
     has_many      :posts
+    accepts_nested_attributes_for :posts
 
+    validates :title, :presence => true
+    
     after_create    :increment_forum_topic_count
     before_destroy  :decrement_forum_topic_count
     after_destroy   :remove_posts

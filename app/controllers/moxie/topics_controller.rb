@@ -17,6 +17,8 @@ module Moxie
   
     def new
       @topic = Topic.new
+      @topic.posts.build
+      @forum = Forum.find( params[:forum_id] )
 
       respond_to do |format|
         format.html # new.html.erb
@@ -26,13 +28,14 @@ module Moxie
     
     def create
       @topic = Topic.new( params[:moxie_topic] )
+      @forum = Forum.find( params[:moxie_topic][:forum_id] )
 
       respond_to do |format|
         if @topic.save
           format.html { redirect_to( moxie_forum_path( @topic.forum ), 
                                 :notice => 'Topic was successfully created.') }
         else
-          format.html { render :action => "new" }
+          format.html { render :new }
         end
       end
     end
