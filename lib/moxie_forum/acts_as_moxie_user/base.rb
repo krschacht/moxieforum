@@ -25,13 +25,20 @@ module MoxieForum
       end
       
       module InstanceMethods
-        def shout
-          "hi"
+        
+        def display_name
+          "[user.display_name]"
         end
         
-      end
-      
-      
+        def admin?
+          false
+        end
+        
+        def moderator?
+          false
+        end
+        
+      end # InstanceMethods      
     end
   end
 end

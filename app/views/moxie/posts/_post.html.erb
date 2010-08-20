@@ -6,8 +6,8 @@
   
   <div class="m_contents">
     <div class="m_meta">
-      <span class="m_author">Keith Schacht</span>
-      <span class="m_datetime">Jun 28, 2008 3:23pm</span>
+      <span class="m_author"><%= post.author.display_name %></span>
+      <span class="m_datetime"><%= time_ago_in_words( post.created_at ) %></span>
     </div>
 
     <div class="m_body">

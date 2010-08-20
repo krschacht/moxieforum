@@ -1,4 +1,4 @@
-<div class="m_nav">< <%= link_to "All Topics in #{@topic.forum.title}", moxie_forum_path( @topic.forum ), :class => "always_underlined "%></div>
+<div class="m_nav">< <%= link_to "All #{moxie_topic_name.titleize.pluralize} in #{@topic.forum.title}", moxie_forum_path( @topic.forum ), :class => "always_underlined "%></div>
 
 <div class="m_header"><%= @topic.title %></div>
 

@@ -4,3 +4,4 @@ module MoxieForum
 end
 
 require 'extensions/action_controller/base'
+

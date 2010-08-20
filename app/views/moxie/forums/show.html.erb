@@ -1,4 +1,4 @@
-<div class="m_nav">< <%= link_to  "All Forums", 
+<div class="m_nav">< <%= link_to  "All #{moxie_forum_name.titleize.pluralize}", 
                                   moxie_forums_path, 
                                   :class => "always_underlined "%>
 </div>
@@ -8,7 +8,7 @@
 </div>
 
 <div class="m_header_links">
-  <%= link_to "Start a new discussion", 
+  <%= link_to "Start a new #{moxie_topic_name}", 
               new_moxie_topic_path( @forum ),
               :class => "always_underlined action" %>
 </div>
@@ -21,7 +21,7 @@
     <div class="m_name">
       <div class="m_title"><%= link_to topic.title, moxie_topic_path( topic ) %></div>
       <div class="m_description">
-        <span class="m_topic_count"><%= pluralize topic.post_count, "post" %>.</span>
+        <span class="m_topic_count"><%= pluralize topic.post_count, moxie_post_name %>.</span>
         <%# forum.description %>
       </div>
     </div>

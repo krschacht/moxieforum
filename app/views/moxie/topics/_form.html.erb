@@ -19,7 +19,7 @@
 
     <div class="m_contents">
       <div class="m_meta">
-        <div class="m_prompt field"><%= f.label :title, "What's your question?" %></div>
+        <div class="m_prompt field"><%= f.label :title, MoxieForum::Engine.config.prompt_for_new_topic_creation %></div>
         <%= f.text_field :title %>
         <div class="m_prompt_explanation"></div>
       </div>
@@ -36,7 +36,7 @@
       <%= hidden_field_tag 'moxie_topic[forum_id]', @forum.id %>
 
       <div class="m_actions">
-        <%= f.submit %>
+        <%= f.submit "Create #{moxie_topic_name.titleize}" %>
         or <%= link_to "Cancel",
                         moxie_forum_path( @forum ),
                         :class => "action" %>        

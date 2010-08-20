@@ -65,8 +65,8 @@ class MoxieForumGenerator < Rails::Generators::Base
                   'app/views/layouts/application.html.erb'
         remove_file 'tmp/~application.html.erb'
       end
-    elsif layout =~ /<%=[ ]+yield\(:content\) or yield[ ]+%>/
-      puts "    \e[1m\e[33mskipping\e[0m  layouts/application.html.erb modification"
+    elsif layout =~ /<%=[ ]+content_for\?\(:content\) \? yield\(:content\) : yield[ ]+%>/
+      puts "    \e[1m\e[33mskipping\e[0m  layouts/application.html.erb modification is already done."
     else
       puts "    \e[1m\e[31mconflict\e[0m  MoxieForum is confused by your layouts/application.html.erb. It does not contain the default line <%= yield %>, you may need to make manual changes to get MoxieForum's nested layouts working. Visit ###### for details."
     end

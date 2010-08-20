@@ -5,13 +5,13 @@
     <div class="m_name">
       <div class="m_title"><%= link_to forum.title, moxie_forum_path( forum ) %></div>
       <div class="m_description">
-        <span class="m_topic_count"><%= pluralize forum.topic_count, "topic" %>.</span>
+        <span class="m_topic_count"><%= pluralize forum.topic_count, moxie_topic_name %>.</span>
         <%= forum.description %>
       </div>
     </div>
 
     <div class="m_info">
-      <div class="m_topic_count"><%= pluralize forum.topic_count, "topic" %></div>
+      <div class="m_topic_count"><%= pluralize forum.topic_count, moxie_topic_name %></div>
     </div>
 
   </div>
