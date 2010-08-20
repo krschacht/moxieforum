@@ -22,8 +22,13 @@ module MoxieForum
 
       # convert symbol to an uppercase class name string
       if config.user_model.is_a? Symbol
-        config.user_model = config.user_model.to_s[0..0].upcase + config.user_model.to_s[1..9]
-      end                  
+        config.user_model_name = config.user_model.to_s[0..0].upcase + config.user_model.to_s[1..9]
+      end
+
+      config.user_model = eval config.user_model_name
+      
+      # make sure mount_at ends with trailing slash
+      config.mount_at += '/'  unless config.mount_at.last == '/'
     end
     
     initializer "static assets" do |app|

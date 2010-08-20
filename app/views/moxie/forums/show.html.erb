@@ -22,7 +22,7 @@
       <div class="m_title"><%= link_to topic.title, moxie_topic_path( topic ) %></div>
       <div class="m_description">
         <span class="m_topic_count"><%= pluralize topic.post_count, moxie_post_name %>.</span>
-        <%# forum.description %>
+        Started by <%= topic.author.full_name %>
       </div>
     </div>
 

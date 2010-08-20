@@ -20,11 +20,18 @@ module MoxieForum
                             :class_name => 'Moxie::Topic'
           
           include MoxieForum::ActsAsMoxieUser::Base::InstanceMethods
-        end        
-        
+        end
       end
       
       module InstanceMethods
+        
+        def profile_pic
+          if self.id == nil
+            "<span style='color: red;'><b>WARNING:</b> There is no current_user helper method within your application_controller.rb. Create this method such that it returns the instance of your logged in user object. The forum will not work correctly until you do this.</span>"
+          else
+            "[user.profile_pic]"
+          end
+        end
         
         def display_name
           "[user.display_name]"

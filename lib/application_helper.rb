@@ -11,5 +11,9 @@ module ApplicationHelper
   def moxie_post_name
     MoxieForum::Engine.config.post_entity_name
   end
+  
+  def current_user
+    MoxieForum::Engine.config.user_model.create
+  end
 
 end

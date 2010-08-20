@@ -182,3 +182,38 @@
 .mfw .m_hidden {
   display: none;
 }
+
+.mfw .error {
+  color: red;
+}
+
+
+.mfw .m_success_msg {
+	background: #FFF9D7 none repeat scroll 0% 50%;
+	border: 1px solid #E2C822;
+}	
+
+.mfw .m_error_msg {
+	background: #FFEBE8 none repeat scroll 0% 50%;
+	border: 1px solid #DD3C10;
+}
+
+.mfw .m_success_msg,
+.mfw .m_error_msg {
+  margin: 10px 0;
+	font-size: 14px;
+	padding: 10px;
+	font-weight: bold;
+	position: relative;	
+}
+
+.mfw .m_success_msg p,
+.mfw .m_error_msg p {
+	font-weight: normal;
+	margin: 5px 0 0 0;
+}
+
+.mfw .m_success_msg p a,
+.mfw .m_error_msg p a {
+  font-weight: bold;
+}

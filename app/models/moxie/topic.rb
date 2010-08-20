@@ -3,7 +3,7 @@ module Moxie
     set_table_name "moxie_topics"
 
     begin
-      user_model = MoxieForum::Engine.config.user_model
+      user_model = MoxieForum::Engine.config.user_model_name
     rescue
       user_model = "user"
     end

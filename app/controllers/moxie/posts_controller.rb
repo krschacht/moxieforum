@@ -1,5 +1,6 @@
 module Moxie
   class PostsController < ApplicationController
+    before_filter :require_user, :only => [ :new, :create ]
 
     layout 'forums'
 
@@ -24,7 +25,10 @@ module Moxie
     end
     
     def create
-      @post = Post.new( params[:moxie_post] )
+      post_params = params[:moxie_post]
+      post_params[:author_id] = current_user.id
+      
+      @post = Post.new( post_params )
 
       respond_to do |format|
         if @post.save
@@ -36,5 +40,13 @@ module Moxie
       end
     end
   end    
+
+
+  private
+  
+  def require_user
+    redirect_to moxie_authorization_error_path
+  end
+
 end
 

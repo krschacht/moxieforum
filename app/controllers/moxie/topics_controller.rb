@@ -1,5 +1,6 @@
 module Moxie
   class TopicsController < ApplicationController
+    before_filter :require_user, :only => [ :new, :create ]
 
     layout 'forums'
 
@@ -27,7 +28,11 @@ module Moxie
     end
     
     def create
-      @topic = Topic.new( params[:moxie_topic] )
+      topic_params = params[:moxie_topic]
+      topic_params[:author_id] = current_user.id
+      topic_params[:posts_attributes]['0'][:author_id] = current_user.id
+            
+      @topic = Topic.new( topic_params )
       @forum = Forum.find( params[:moxie_topic][:forum_id] )
 
       respond_to do |format|
@@ -39,6 +44,13 @@ module Moxie
         end
       end
     end
-  end    
-end
+  end
+  
+  
+  private
+  
+  def require_user
+    redirect_to moxie_authorization_error_path
+  end
 
+end

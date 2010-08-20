@@ -2,6 +2,8 @@ Rails.application.routes.draw do |map|
 
   mount_at = MoxieForum::Engine.config.mount_at
 
+  match  mount_at => 'moxie/forums#index'
+  
   map.resources :forums, :only => [ :index, :show ], 
                 :controller   => "moxie/forums", 
                 :path_prefix  => mount_at,
@@ -26,4 +28,7 @@ Rails.application.routes.draw do |map|
                 :path_prefix  => mount_at + "admin",
                 :name_prefix  => "admin_moxie_"
   
+  match "#{mount_at}/authorization_error" => 'moxie/forums#authorization_error', 
+        :as => 'moxie_authorization_error'
+
 end

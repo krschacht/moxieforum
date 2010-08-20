@@ -10,24 +10,42 @@
   </div>
   <% end %>
 
-  <div class="m_post clearfix m_newpost">
-    <div class="m_user">
-      pic
-    </div>
+  <% if current_user %>
 
-    <div class="m_contents">
-
-      <div class="m_body">
-        <div class="m_prompt field"><%= f.label :body, "Add a reply" %></div>
-          <%= f.text_area :body %>
+    <div class="m_post clearfix m_newpost">
+      <div class="m_user">
+        <%= current_user.profile_pic %>
       </div>
-            
-      <%= hidden_field_tag 'moxie_post[topic_id]', @topic.id %>
 
-      <div class="m_actions"><%= f.submit "Create #{moxie_post_name.titleize}" %></div>
+      <div class="m_contents">
+
+        <div class="m_body">
+          <div class="m_prompt field"><%= f.label :body, "Add a reply #{moxie_post_name}" %></div>
+            <%= f.text_area :body %>
+        </div>
+            
+        <%= hidden_field_tag 'moxie_post[topic_id]', @topic.id %>
+
+        <div class="m_actions"><%= f.submit "Create #{moxie_post_name.titleize}" %></div>
       
-    </div> <!-- contents -->
-  </div>   <!-- post -->
+      </div> <!-- contents -->
+    </div>   <!-- post -->
+  
+  <% else %>
+
+    <div class="m_post clearfix m_newpost">
+
+      <div class="m_contents">
+      
+        <div class="m_body">
+          <div class="m_prompt field">Add a reply <%= moxie_post_name %></div>
+          
+          You must be logged in to reply.
+        </div>
+      </div>
+    </div>
+  
+  <% end %>
   
   
 
