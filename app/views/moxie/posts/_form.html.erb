@@ -1,4 +1,5 @@
 <%= form_for [ @post ] do |f| %>
+
   <% if @post.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@post.errors.count, "error") %> prohibited this forum from being saved:</h2>
@@ -46,7 +47,5 @@
     </div>
   
   <% end %>
-  
-  
 
 <% end %>

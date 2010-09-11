@@ -13,7 +13,12 @@ module ApplicationHelper
   end
   
   def current_user
-    MoxieForum::Engine.config.user_model.create
+    if  defined?( MoxieForum::Engine.config.user_model ) == 'constant' && 
+        MoxieForum::Engine.config.user_model.class == Class
+      MoxieForum::Engine.config.user_model.create
+    else
+      nil
+    end
   end
 
 end

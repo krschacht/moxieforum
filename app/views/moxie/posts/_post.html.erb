@@ -1,12 +1,12 @@
 <div class="m_post clearfix">
     
   <div class="m_user">
-    <%= post.author.profile_pic %>
+    <%= post.author.profile_pic  if post.author %>
   </div>
   
   <div class="m_contents">
     <div class="m_meta">
-      <span class="m_author"><%= post.author.display_name %></span>
+      <span class="m_author"><%= post.author.display_name  if post.author %></span>
       <span class="m_datetime"><%= time_ago_in_words( post.created_at ) %></span>
     </div>
 

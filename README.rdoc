@@ -4,6 +4,21 @@ There is lots of great forum software for PHP yet I've struggled to find great f
 
 This is my first plugin/gem for rails but I'm trying to take advantage of all the rails 3 goodness to make this a fantastic plugin. I want it to be effortless to install and integrate with your existing app. When MoxieForum is done, I hope the days of rewriting forum functionality for every rails app are over.
 
+== Installation
+
+* Requirement: Rails v3
+* rails demo
+* edit: 'Gemfile' and add: gem 'moxie_forum'
+* bundle install
+* rails migrate moxie_forum
+* rails db:create
+* rails db:migrate
+* rails server
+* Try: http://localhost:3000/forums
+* Edit: initializers/moxie_forum.rb
+
+At this point a basic forum is up and running but if you don't have a user model in place the forum is actually slightly broken. You won't be able to post.
+
 == Features
 
 * Easy generator install
@@ -21,6 +36,3 @@ Topics:
 Forum:
 * allow admin-only forums
 
-== Installation
-
-Instructions coming soon.
