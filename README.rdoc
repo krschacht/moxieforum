@@ -1,92 +1,26 @@
-Features:
+== Overview
 
-TESTS
+There is lots of great forum software for PHP yet I've struggled to find great forums for Rails. With Moxieforum I set out to fix that.
+
+This is my first plugin/gem for rails but I'm trying to take advantage of all the rails 3 goodness to make this a fantastic plugin. I want it to be effortless to install and integrate with your existing app. When MoxieForum is done, I hope the days of rewriting forum functionality for every rails app are over.
+
+== Features
+
+* Easy generator install
+* Basic features for forums, topics, and posts
+
+== Future Features
 
 Topics:
-- sticky
-- locked
-- merge
-- split
-
-- figure out how to destroy all posts in one query instead of individual
-
+* sticky
+* locked
+* merge
+* split
+* figure out how to destroy all posts in one query instead of individual
 
 Forum:
-- allow admin-only forums
-
-
-
-== Intro
-
-authr3 is yet another autentication plugin for Rails. It is built on top of the new Rails::Engine API. Basically, I was working on a new Rails 3 app, needed authentication and decided to write this plugin on a work-filled Friday night. I wouldn't suggest this plugin for use in anything besides a local app right now seeing as its missing things like forced HTTPS for login. You can add this to your app yourself if you like or if you have some free time please fork it or let me know and will give you commit access to this one.
-
-Because authr3 is an engine it runs in its container in any app you wish. You only have to generate a migration to create the accounts table. See the install & basic usage instructions below for how to get going.
-
-the bcrypt-ruby library is used to safely store passwords. Currently, the default cost factor, 10, is used. As configuration becomes available this will be something that you can change.
+* allow admin-only forums
 
 == Installation
 
-For now, since authr3 is really more of an example than anything else, I am not going to push the gem up to rubygems.org. Follow the instructions below to install authr3 as a gem and get it working with your Rails 3 app.
-
-Clone this repository:
-
-    git clone git://github.com/jrwest/authr3.git
-
-
-Install bcrypt-ruby & authr3 gems on your machine:
-
-    sudo gem install bcrypt-ruby
-    sudo rake install
-
-
-Add authr3 to your Gemfile
-
-    gem "bcrypt-ruby", :require => "bcrypt" #for now you must add this to your Gemfile as well. 
-                                            #later authr3 will take care of this.
-    gem "authr3", :require => "authr"    
-
-
-Generate the accounts table migration
-
-    rails g authr
-
-The migration defines two fields: 'uname' and 'hashed_password' . Add any other fields you need in the accounts table to the migration but leave the uname and hashed_passwords fields. These are used by authr3. 
-
-== Basic Usage
-
-    class ApplicationController < ActionController::Base
-      authenticate #require valid session for any action in any controller 
-                   #only /session/new can be accessed
-                   #you will have to create an account in your console
-                   #before using because /accounts/new will not be accessible
-                   #either. 
-
-                   #authenticate can be passed :only and :except arrays just like
-                   #Rails filters
-    end
-
-   
-
-    class PublicController < ApplicationController
-       skip_authenticate!  #every action in this controller is now public
-                           #and can now be accessed without a valid session
-                           #just like /session/new
-
-                           #skip_authenticate! can be passed :only and :except arrays
-                           #just like Rails filters
-    end
-
-
-auth3 defines an Account class. This model has both the :uname and :hashed_password fields as well as the password accessor. To set an account password use:
-
-    my_account = Account.new
-    my_account.password = 'myplaintextpassword'
-
-This will encrpyt the plaintext password and store it in hashed_password. You should use 
-
-
-    my_account.password
-
-not hashed_password to access the password.
-
-Thats it. 
+Instructions coming soon.
