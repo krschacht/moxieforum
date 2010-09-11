@@ -9,28 +9,59 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Keith Schacht"]
-  s.date = %q{2010-06-30}
+  s.date = %q{2010-09-10}
   s.email = %q{krschacht@gmail.com}
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
   s.files = [
-    "app/controllers/moxie_forum/accounts_controller.rb",
-     "app/controllers/moxie_forum/sessions_controller.rb",
-     "app/models/account.rb",
-     "app/views/authr/accounts/new.html.erb",
-     "app/views/authr/sessions/new.html.erb",
+    "app/controllers/moxie/admin/forums_controller.rb",
+     "app/controllers/moxie/admin_controller.rb",
+     "app/controllers/moxie/forums_controller.rb",
+     "app/controllers/moxie/posts_controller.rb",
+     "app/controllers/moxie/topics_controller.rb",
+     "app/helpers/moxie/application_helper.rb",
+     "app/helpers/moxie/forums_helper.rb",
+     "app/models/moxie/forum.rb",
+     "app/models/moxie/post.rb",
+     "app/models/moxie/topic.rb",
+     "app/views/layouts/forums.html.erb",
+     "app/views/moxie/admin/forums/_form.html.erb",
+     "app/views/moxie/admin/forums/edit.html.erb",
+     "app/views/moxie/admin/forums/index.html.erb",
+     "app/views/moxie/admin/forums/new.html.erb",
+     "app/views/moxie/admin/forums/show.html.erb",
+     "app/views/moxie/admin/index.html.erb",
+     "app/views/moxie/forums/authorization_error.html.erb",
+     "app/views/moxie/forums/index.html.erb",
+     "app/views/moxie/forums/show.html.erb",
+     "app/views/moxie/posts/_form.html.erb",
+     "app/views/moxie/posts/_post.html.erb",
+     "app/views/moxie/topics/_form.html.erb",
+     "app/views/moxie/topics/new.html.erb",
+     "app/views/moxie/topics/show.html.erb",
      "config/routes.rb",
-     "lib/extensions/action_controller/base.rb",
-     "lib/generators/moxie_forum/moxie_forum_generator.rb",
-     "lib/generators/moxie_forum/templates/migration.rb",
+     "lib/application_helper.rb",
      "lib/moxie_forum.rb",
-     "lib/moxie_forum/engine.rb"
+     "lib/moxie_forum/acts_as_moxie_user/base.rb",
+     "lib/moxie_forum/engine.rb",
+     "lib/rails/generators/moxie_forum/moxie_forum_generator.rb",
+     "lib/rails/generators/moxie_forum/templates/config.yml",
+     "lib/rails/generators/moxie_forum/templates/initializer.rb",
+     "lib/rails/generators/moxie_forum/templates/migration.rb",
+     "lib/rails/generators/moxie_forum/templates/schema.rb",
+     "lib/rails/railties/tasks.rake",
+     "lib/tasks/tasks.rb"
   ]
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Fantastic forum software for Rails 3}
+  s.test_files = [
+    "test/generators/moxie_forum_generator_test.rb",
+     "test/test_helper.rb",
+     "test/unit/forum_test.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
