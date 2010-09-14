@@ -24,6 +24,10 @@ You can now visit: http://localhost:3000/forums
 
 At this point the basic forum setup is done, you can click around, however it's not actually integrated with your user model and authentication system yet so you won't be able to post. To complete that:
 
+* Edit config/initializers/moxie_forum.rb, change :user to reflect your user model
+* Edit your ActiveRecord user model and add 'acts_as_moxie_user' inside the class near the top
+* Also in your user model, MoxieForum will call the following instance methods, you should override these: profile_pic, display_name, admin?, moderator?
+
 == Features
 
 * #1 feature - Easy integration with your existing rails app including tight integration with your existing user model and 'admin' designation for users
