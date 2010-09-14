@@ -13,7 +13,7 @@ begin
     gem.summary = "Fantastic forum software for Rails 3"
     gem.email = "krschacht@gmail.com"
     gem.authors = ["Keith Schacht"]
-    gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
+    gem.files = Dir["{lib}/**/*", "{app}/**/*", "{public}/**/*", "{config}/**/*"]
   end
   Jeweler::GemcutterTasks.new
 rescue

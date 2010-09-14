@@ -49,13 +49,14 @@ class MoxieForumGenerator < Rails::Generators::Base
     layout = f.read; f.close
     
     if layout =~ /<%=[ ]+yield[ ]+%>/
-      print "    \e[1m\e[34mquestion\e[0m  Your layouts/application.html.erb layout currently has the line <%= yield %>. MoxieForum needs to change this line to <%= yield(:content) or yield %> to support its nested layouts. This change should not affect any of your existing layouts or views. Is this okay? [y/n] "
+      print "    \e[1m\e[34mquestion\e[0m  Your layouts/application.html.erb layout currently has the line <%= yield %>. MoxieForum needs to change this line to <%= content_for?(:content) ? yield(:content) : yield %> to support its nested layouts. This change should not affect any of your existing layouts or views. Is this okay? [y/n] "
       begin
         answer = gets.chomp
       end while not answer =~ /[yn]/i
       
       if answer =~ /y/i
-        layout.gsub!(/<%=[ ]+yield[ ]+%>/, '<%= yield(:content) or yield %>')
+        
+        layout.gsub!(/<%=[ ]+yield[ ]+%>/, '<%= content_for?(:content) ? yield(:content) : yield %>')
 
         tmp = File.open "tmp/~application.html.erb", "w"
         tmp.write layout; tmp.close
