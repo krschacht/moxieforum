@@ -4,25 +4,30 @@ There is lots of great forum software for PHP yet I've struggled to find great f
 
 This is my first plugin/gem for rails but I'm trying to take advantage of all the rails 3 goodness to make this a fantastic plugin. I want it to be effortless to install and integrate with your existing app. When MoxieForum is done, I hope the days of rewriting forum functionality for every rails app are over.
 
+Note: this forum is a rails engine, it's not designed to run stand-alone. Instead, it assumes you have an existing rails application, with an existing user model and a mechanism for users to register and login. If that is not the case, you may want: http://github.com/krschacht/moxieforum_standalone
+
+P.S. I've extracted a lot of useful Rails Engine stuff for other engine builders: http://github.com/krschacht/rails_3_engine_demo
+
 == Installation
 
-* Requirement: Rails v3
-* rails demo
-* edit: 'Gemfile' and add: gem 'moxie_forum'
-* bundle install
-* rails migrate moxie_forum
-* rails db:create
+Technically all you need to do is "sudo gem install moxie_forum", but I'll walk you through the basics of integration:
+
+Requirement: Rails v3
+
+* sudo gem install moxie_forum
+* [ edit your app's 'Gemfile' and add: ] gem 'moxie_forum'
+* rails generate moxie_forum
 * rails db:migrate
 * rails server
-* Try: http://localhost:3000/forums
-* Edit: initializers/moxie_forum.rb
 
-At this point a basic forum is up and running but if you don't have a user model in place the forum is actually slightly broken. You won't be able to post.
+You can now visit: http://localhost:3000/forums
+
+At this point the basic forum setup is done, you can click around, however it's not actually integrated with your user model and authentication system yet so you won't be able to post. To complete that:
 
 == Features
 
-* Easy generator install
-* Basic features for forums, topics, and posts
+* #1 feature - Easy integration with your existing rails app including tight integration with your existing user model and 'admin' designation for users
+* Administrative interface to create multiple forums
 
 == Future Features
 

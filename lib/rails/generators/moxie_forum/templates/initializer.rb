@@ -1,7 +1,7 @@
 module MoxieForum
   class Engine < Rails::Engine
 
-    config.mount_at = '/'
+    config.mount_at = '/forum'
     config.user_model = :user
     config.forum_entity_name = 'forum'
     config.topic_entity_name = 'discussion'
