@@ -1,11 +1,18 @@
 module Moxie
   class TopicsController < ApplicationController
-    before_filter :require_user, :only => [ :new, :create ]
+    before_filter :require_user, :only => [ :new, :create, :show_postable ]
 
     layout 'forums'
 
     unloadable
 
+    def show_postable
+      @topic = Topic.find( params[:topic_id] )
+      @post = Post.new
+
+      render :action => :show
+    end
+    
     def show
       @topic = Topic.find( params[:id] )
       @post = Post.new

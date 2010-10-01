@@ -41,7 +41,7 @@
         <div class="m_body">
           <div class="m_prompt field">Add a reply <%= moxie_post_name %></div>
           
-          You must be logged in to reply.
+          <%= link_to "Login", topic_show_postable_moxie_topic_path( @topic ) %> to post a reply.
         </div>
       </div>
     </div>

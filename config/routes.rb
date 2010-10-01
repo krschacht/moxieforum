@@ -3,30 +3,22 @@ Rails.application.routes.draw do |map|
   mount_at = MoxieForum::Engine.config.mount_at
 
   match  mount_at => 'moxie/forums#index'
-  
-  map.resources :forums, :only => [ :index, :show ], 
-                :controller   => "moxie/forums", 
-                :path_prefix  => mount_at,
-                :name_prefix  => "moxie_"
-                
-  match "#{mount_at}forums/:forum_id/topics/new" => 'moxie/topics#new', :as => 'new_moxie_topic'
 
-  map.resources :topics, :only => [ :show, :create ],
-                :controller   => "moxie/topics", 
-                :path_prefix  => mount_at,
-                :name_prefix  => "moxie_"
+  scope mount_at do
+    scope :module => 'moxie', :as => 'moxie' do
+      resources :forums, :only => [ :index, :show ] do
+        match 'topics/new', :to => 'topics#new', :module => 'moxie', :as => 'new_moxie_topic'
+      end
+      resources :topics, :only => [ :create, :show ] do
+        get :show_postable, :as => 'show_postable_moxie_topic'
+      end
+      resources :posts
 
-  map.resources :posts,
-                :controller   => "moxie/posts", 
-                :path_prefix  => mount_at,
-                :name_prefix  => "moxie_"
-
-  match "#{mount_at}admin" => 'moxie/admin#index', :as => 'moxie_admin'
-  
-  map.resources :forums,
-                :controller   => "moxie/admin/forums",
-                :path_prefix  => mount_at + "admin",
-                :name_prefix  => "admin_moxie_"
+      namespace :admin, :name_prefix => 'admin' do
+        resources :forums
+      end
+    end
+  end
   
   match "#{mount_at}/authorization_error" => 'moxie/forums#authorization_error', 
         :as => 'moxie_authorization_error'
