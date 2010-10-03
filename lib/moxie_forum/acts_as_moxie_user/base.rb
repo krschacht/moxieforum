@@ -18,6 +18,10 @@ module MoxieForum
           has_many :topics, :foreign_key => 'author_id', 
                             :order => "created_at", 
                             :class_name => 'Moxie::Topic'
+                            
+          def self.i_am_moxie_user
+            true
+          end
           
           include MoxieForum::ActsAsMoxieUser::Base::InstanceMethods
         end

@@ -20,14 +20,12 @@ module MoxieForum
     
     initializer "moxie_forum.check_config" do |app|
 
-      # convert symbol to a string and upcase first letter
-      if config.user_model.is_a? Symbol
-        config.user_model_name = config.user_model.to_s.classify # [0..0].upcase + config.user_model.to_s[1..9]
-      end
+      # load all the models in the app
+      Dir.glob(RAILS_ROOT + '/app/models/**/*.rb').each { |file| require file }
 
-      if defined?( config.user_model ) == 'constant'
-        config.user_model = eval config.user_model_name
-      end
+      # Figure out which one is the official user class
+      config.user_model = ActiveRecord::Base.send(:subclasses).select { |c| c.respond_to? :i_am_moxie_user }.first
+      config.user_model_name = config.user_model.to_s
       
       # make sure mount_at ends with trailing slash
       config.mount_at += '/'  unless config.mount_at.last == '/'

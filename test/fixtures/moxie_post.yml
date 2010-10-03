@@ -1,5 +1,4 @@
 welcome_msg:
   topic_id: :welcome
   author_id: 0
-  title: Welcome Everyone
   body: I hope you like it here on our forum!

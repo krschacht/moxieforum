@@ -33,7 +33,6 @@ class ForumTest < Test::Unit::TestCase
 
     p = Moxie::Post.create(   :topic_id   => moxie_topics(:welcome).id,
                               :author_id  => 0,
-                              :title      => "I forgot",
                               :body       => "Don't forget to introduce yourself." )
   
     assert  moxie_topics(:welcome).posts.include? p
@@ -52,12 +51,10 @@ class ForumTest < Test::Unit::TestCase
                               :title      => "Dummy topic 2" )
     p1 = Moxie::Post.create(  :topic_id   => t1.id,
                               :author_id  => 0,
-                              :title      => "Dummy post 1.1",
-                              :body       => "body" )
+                              :body      => "Dummy post 1.1" )
     p2 = Moxie::Post.create(  :topic_id   => t1.id,
                               :author_id  => 0,
-                              :title      => "Dummy post 1.2",
-                              :body       => "body" )
+                              :body      => "Dummy post 1.2" )
 
     assert f.topics.include? t1
     assert t1.posts.include? p1    
